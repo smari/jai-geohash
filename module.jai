@@ -127,7 +127,7 @@ geohash_decode :: (lat_range: GeoHashRange, lon_range: GeoHashRange, hash: GeoHa
 }
 
 
-interleave64 :: inline (xlo: u32, ylo: u32) -> u64 {
+interleave64 :: inline (xlo: u32, ylo: u32) -> u64 #no_abc {
     B :: u64.[ 0x5555555555555555, 0x3333333333333333, 0x0F0F0F0F0F0F0F0F, 0x00FF00FF00FF00FF, 0x0000FFFF0000FFFF ];
     S :: u64.[ 1, 2, 4, 8, 16 ];
 
@@ -143,7 +143,7 @@ interleave64 :: inline (xlo: u32, ylo: u32) -> u64 {
     return x | (y << 1);
 }
 
-deinterleave64 :: inline (interleaved: u64) -> u64 {
+deinterleave64 :: inline (interleaved: u64) -> u64 #no_abc {
     B :: u64.[ 0x5555555555555555, 0x3333333333333333, 0x0F0F0F0F0F0F0F0F, 0x00FF00FF00FF00FF, 0x0000FFFF0000FFFF, 0x00000000FFFFFFFF ];
     S :: u64.[ 0, 1, 2, 4, 8, 16 ];
 
